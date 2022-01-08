@@ -1,5 +1,5 @@
 import express from 'express';
-import { currentUser } from '@vitoraatickets/common';
+import { currentUser } from '@vitoraafastpayfood/common';
 
 const router = express.Router();
 
