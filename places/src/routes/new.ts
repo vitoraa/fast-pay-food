@@ -19,7 +19,10 @@ router.post('/api/places', requireAuth, [
     .isEmpty()
     .withMessage('Type is required'),
 ], validateRequest, async (req: Request, res: Response) => {
-  res.status(200).send();
+  const { name, address, type } = req.body;
+  const place = Place.build({ name, address, type });
+  await place.save();
+  res.status(201).send(place);
 });
 
 export { router as newPlaceRouter };
