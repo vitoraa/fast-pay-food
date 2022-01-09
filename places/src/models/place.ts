@@ -7,7 +7,7 @@ interface PlaceAttrs {
   type: string;
 }
 
-interface PlaceDoc extends mongoose.Document {
+export interface PlaceDoc extends mongoose.Document {
   name: string;
   address: string;
   type: string;
