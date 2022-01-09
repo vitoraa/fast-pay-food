@@ -17,6 +17,13 @@ spec:
                 name: auth-srv
                 port:
                   number: 3000
+          - path: /api/places/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: places-srv
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix
             backend:
