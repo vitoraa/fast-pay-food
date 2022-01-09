@@ -1,7 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
 import { Place } from '../../models/places';
-import mongoose from 'mongoose';
 
 const createPlace = () => {
   return Place.build({
@@ -51,7 +50,6 @@ test('should return all places', async () => {
     .set('Cookie', cookie)
     .send({})
 
-  console.log(response.body);
   expect(response.status).toEqual(200);
   expect(response.body.length).toEqual(3);
 });
