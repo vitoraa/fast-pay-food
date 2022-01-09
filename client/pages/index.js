@@ -2,7 +2,11 @@ import Link from 'next/link';
 const index = ({ currentUser, places }) => {
   const placeList = places.map(place => (
     <tr key={place.id}>
-      <td>{place.name}</td>
+      <td>
+        <Link href="/places/[placeId]" as={`/places/${place.id}`}>
+          <a>{place.name}</a>
+        </Link>
+      </td>
       <td>{place.address}</td>
       <td>{place.type}</td>
     </tr>
