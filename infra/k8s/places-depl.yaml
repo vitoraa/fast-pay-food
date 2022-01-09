@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: places-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: places
+  template:
+    metadata:
+      labels:
+        app: places
+    spec:
+      containers:
+        - name: places
+          image: vitoraa/fastpayfood-places
+          env:
+            - name: MONGO_URI
+              value: "mongodb://places-mongo-srv:27017/places"
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: places-srv
+spec:
+  selector:
+    app: places
+  ports:
+    - name: places
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
