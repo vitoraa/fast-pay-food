@@ -4,6 +4,7 @@ import { NotFoundError, errorHandler, currentUser } from '@vitoraafastpayfood/co
 import cookieSession from 'cookie-session';
 import { indexPlaceRouter } from './routes';
 import { newPlaceRouter } from './routes/new';
+import { showPlaceRouter } from './routes/show';
 
 const app = express();
 app.set('trust proxy', true);
@@ -16,6 +17,7 @@ app.use(cookieSession({
 app.use(currentUser);
 app.use(indexPlaceRouter);
 app.use(newPlaceRouter);
+app.use(showPlaceRouter);
 
 app.all('*', async () => {
   throw new NotFoundError()
