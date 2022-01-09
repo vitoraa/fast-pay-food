@@ -15,3 +15,43 @@ test('should only be accessed if the user is signed in', async () => {
     .send({})
     .expect(401);
 });
+
+test('should return an error if an invalid place is provided', async () => {
+  const cookie = global.signin();
+  await request(app)
+    .post('/api/places')
+    .set('Cookie', cookie)
+    .send({
+      name: '',
+      address: '',
+      type: '',
+    })
+    .expect(400);
+
+  await request(app)
+    .post('/api/places')
+    .set('Cookie', cookie)
+    .send({
+      name: 'Name',
+      address: 'Adress',
+    })
+    .expect(400);
+
+  await request(app)
+    .post('/api/places')
+    .set('Cookie', cookie)
+    .send({
+      address: 'Adress',
+      type: 'Type',
+    })
+    .expect(400);
+
+  await request(app)
+    .post('/api/places')
+    .set('Cookie', cookie)
+    .send({
+      name: 'Name',
+      address: 'Adress',
+    })
+    .expect(400);
+});
