@@ -5,6 +5,7 @@ import cookieSession from 'cookie-session';
 import { indexPlaceRouter } from './routes/place';
 import { newPlaceRouter } from './routes/place/new';
 import { showPlaceRouter } from './routes/place/show';
+import { newMenuRouter } from './routes/menu/new';
 
 const app = express();
 app.set('trust proxy', true);
@@ -18,6 +19,7 @@ app.use(currentUser);
 app.use(indexPlaceRouter);
 app.use(newPlaceRouter);
 app.use(showPlaceRouter);
+app.use(newMenuRouter);
 
 app.all('*', async () => {
   throw new NotFoundError()
