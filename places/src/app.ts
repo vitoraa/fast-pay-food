@@ -1,6 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-import { NotFoundError, errorHandler } from '@vitoraafastpayfood/common';
+import { NotFoundError, errorHandler, currentUser } from '@vitoraafastpayfood/common';
 import cookieSession from 'cookie-session';
 import { indexPlaceRouter } from './routes';
 
@@ -12,6 +12,7 @@ app.use(cookieSession({
   secure: false,
 }));
 
+app.use(currentUser);
 app.use(indexPlaceRouter);
 
 app.all('*', async () => {
