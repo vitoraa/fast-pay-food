@@ -1,7 +1,7 @@
 import { requireAuth, validateRequest } from '@vitoraafastpayfood/common';
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { Place } from '../models/place';
+import { Place } from '../../models/place';
 
 const router = express.Router();
 

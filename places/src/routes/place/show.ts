@@ -1,6 +1,6 @@
 import { NotFoundError } from '@vitoraafastpayfood/common';
 import express, { Request, Response } from 'express';
-import { Place } from '../models/place';
+import { Place } from '../../models/place';
 
 const router = express.Router();
 

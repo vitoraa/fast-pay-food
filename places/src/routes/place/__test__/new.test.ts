@@ -1,6 +1,6 @@
 import request from 'supertest';
-import { app } from '../../app';
-import { Place } from '../../models/place';
+import { app } from '../../../app';
+import { Place } from '../../../models/place';
 
 test('should have a route handler listening to api/places for post request', async () => {
   const response = await request(app)

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
-import { app } from '../../app';
+import { app } from '../../../app';
 
 test('should return 404 if the place is not found', async () => {
   const id = new mongoose.Types.ObjectId().toHexString();

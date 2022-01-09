@@ -2,9 +2,9 @@ import express from 'express';
 import 'express-async-errors';
 import { NotFoundError, errorHandler, currentUser } from '@vitoraafastpayfood/common';
 import cookieSession from 'cookie-session';
-import { indexPlaceRouter } from './routes';
-import { newPlaceRouter } from './routes/new';
-import { showPlaceRouter } from './routes/show';
+import { indexPlaceRouter } from './routes/place';
+import { newPlaceRouter } from './routes/place/new';
+import { showPlaceRouter } from './routes/place/show';
 
 const app = express();
 app.set('trust proxy', true);
