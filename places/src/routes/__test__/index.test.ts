@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
-import { Place } from '../../models/places';
+import { Place } from '../../models/place';
 
 const createPlace = () => {
   return Place.build({

@@ -1,6 +1,6 @@
 import { requireAuth } from '@vitoraafastpayfood/common';
 import express, { Request, Response } from 'express';
-import { Place } from '../models/places';
+import { Place } from '../models/place';
 
 const router = express.Router();
 
