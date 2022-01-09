@@ -1,5 +1,6 @@
 import request from 'supertest';
 import { app } from '../../app';
+import { Place } from '../../models/places';
 
 test('should have a route handler listening to api/places for post request', async () => {
   const response = await request(app)
@@ -54,4 +55,22 @@ test('should return an error if an invalid place is provided', async () => {
       address: 'Adress',
     })
     .expect(400);
+});
+
+test('should create a place', async () => {
+  await request(app)
+    .post('/api/places')
+    .set('Cookie', global.signin())
+    .send({
+      name: 'Name',
+      address: 'Adress',
+      type: 'Type',
+    })
+    .expect(201);
+
+  const placeFound = await Place.find({});
+  expect(placeFound[0]).toBeTruthy();
+  expect(placeFound[0]!.name).toEqual('Name');
+  expect(placeFound[0]!.address).toEqual('Adress');
+  expect(placeFound[0]!.type).toEqual('Type');
 });
