@@ -1,0 +1,26 @@
+{
+  "name": "fast-pay-food",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --passWithNoTests --noStackTrace --runInBand",
+    "test:staged": "npm test -- --findRelatedTests",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitoraa/fast-pay-food.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitoraa/fast-pay-food/issues"
+  },
+  "homepage": "https://github.com/vitoraa/fast-pay-food#readme",
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "lerna": "^4.0.0"
+  }
+}
