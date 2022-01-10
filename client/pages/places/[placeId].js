@@ -3,9 +3,14 @@ import useRequest from "../../hooks/use-request";
 
 const PlaceShow = ({ place }) => {
 
+  const callPageNewMenu = () => {
+    Router.push('/places/[placeId]/menus/new', `/places/${place.id}/menus/new`);
+  }
+
   return (
     <div>
       <h1>{place.name}</h1>
+      <button className="btn btn-primary" onClick={() => callPageNewMenu()}>New Menu</button>
     </div>
   );
 }
