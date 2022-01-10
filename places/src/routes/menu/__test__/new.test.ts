@@ -58,7 +58,7 @@ test('should create a place', async () => {
     .send({
       name: 'Name',
     })
-    .expect(201);
+    .expect(200);
 
   expect(menuCreated.body.name).toEqual('Name');
   expect(menuCreated.body.id).toBeDefined();
