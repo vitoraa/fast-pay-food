@@ -20,8 +20,9 @@ router.post('/api/places/:id/menus', requireAuth, [
     throw new NotFoundError();
   }
 
-  const menu = Menu.build({ name, place });
-  await menu.save();
+  const menu = Menu.build({ name });
+  place.menus.push(menu);
+  await place.save();
 
   res.status(201).send(menu);
 });

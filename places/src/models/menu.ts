@@ -1,15 +1,11 @@
 import mongoose from 'mongoose';
-import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
-import { PlaceDoc } from './place'
 
 interface MenuAttrs {
   name: string;
-  place: PlaceDoc;
 }
 
-interface MenuDoc extends mongoose.Document {
+export interface MenuDoc extends mongoose.Document {
   name: string;
-  place: PlaceDoc;
   version: number;
 }
 
@@ -17,15 +13,11 @@ interface MenuModel extends mongoose.Model<MenuDoc> {
   build (attrs: MenuAttrs): MenuDoc;
 }
 
-const menuSchema = new mongoose.Schema(
+export const menuSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
-    },
-    place: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Place'
     }
   },
   {
@@ -37,9 +29,6 @@ const menuSchema = new mongoose.Schema(
     }
   }
 );
-
-menuSchema.set('versionKey', 'version');
-menuSchema.plugin(updateIfCurrentPlugin);
 
 menuSchema.statics.build = (attrs: MenuAttrs) => {
   return new Menu(attrs);
