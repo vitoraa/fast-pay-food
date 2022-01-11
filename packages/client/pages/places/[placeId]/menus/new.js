@@ -5,6 +5,7 @@ import useRequest from "../../../../hooks/use-request";
 
 const NewMenu = () => {
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   const router = useRouter();
   const { placeId } = router.query
@@ -12,7 +13,7 @@ const NewMenu = () => {
   const { doRequest, errors } = useRequest({
     url: `/api/places/${placeId}/menus`,
     method: 'post',
-    body: { name },
+    body: { name, description },
     onSuccess: () => Router.back()
   });
 
@@ -28,6 +29,10 @@ const NewMenu = () => {
         <div className="form-group">
           <label>Name</label>
           <input value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <input value={description} onChange={(e) => setDescription(e.target.value)} className="form-control" />
         </div>
         {errors}
         <button className="btn btn-primary">Submit</button>

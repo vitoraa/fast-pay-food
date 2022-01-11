@@ -15,7 +15,7 @@ const PlaceShow = ({ place }) => {
           </h5>
         </div>
         <div className="card-body">
-          <p className="card-text">Descrição</p>
+          <p className="card-text">{menu.description}</p>
         </div>
       </div>
     );
