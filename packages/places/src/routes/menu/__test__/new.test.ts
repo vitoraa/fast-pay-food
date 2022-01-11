@@ -2,6 +2,7 @@ import request from 'supertest';
 import mongoose from 'mongoose';
 import { app } from '../../../app';
 import { Place } from '../../../models/place';
+import faker from 'faker';
 
 test('should have a route handler listening to api/places for post request', async () => {
   const placeId = new mongoose.Types.ObjectId().toHexString();
@@ -41,6 +42,12 @@ test('should return an error 400 if an invalid menu is provided', async () => {
     .post(`/api/places/${placeId}/menus`)
     .set('Cookie', global.signin())
     .send({})
+    .expect(400);
+
+  await request(app)
+    .post(`/api/places/${placeId}/menus`)
+    .set('Cookie', global.signin())
+    .send({ name: 'name', description: faker.random.words(201) })
     .expect(400);
 });
 

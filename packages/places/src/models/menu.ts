@@ -2,10 +2,12 @@ import mongoose from 'mongoose';
 
 interface MenuAttrs {
   name: string;
+  description?: string;
 }
 
 export interface MenuDoc extends mongoose.Document {
   name: string;
+  description: string;
   version: number;
 }
 
@@ -18,6 +20,9 @@ export const menuSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+    },
+    description: {
+      type: String,
     }
   },
   {

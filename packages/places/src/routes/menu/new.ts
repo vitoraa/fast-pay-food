@@ -10,9 +10,14 @@ router.post('/api/places/:id/menus', requireAuth, [
   body('name')
     .not()
     .isEmpty()
-    .withMessage('Name is required')
+    .withMessage('Name is required'),
+  body('description')
+    .optional()
+    .isString()
+    .isLength({ min: 0, max: 200 })
+    .withMessage('Description must be less than 200 characters'),
 ], validateRequest, async (req: Request, res: Response) => {
-  const { name } = req.body;
+  const { name, description } = req.body;
 
   const place = await Place.findById(req.params.id);
 
@@ -20,7 +25,7 @@ router.post('/api/places/:id/menus', requireAuth, [
     throw new NotFoundError();
   }
 
-  const menu = Menu.build({ name });
+  const menu = Menu.build({ name, description });
   place.menus.push(menu);
   await place.save();
 
