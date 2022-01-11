@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
     "test": "jest --passWithNoTests --noStackTrace --runInBand",
-    "test:staged": "npm test -- --findRelatedTests",
+    "test:staged": "npm test -- --findRelatedTests --bail",
     "test:ci": "jest",
     "precommit": "lint-staged"
   },
