@@ -18,7 +18,7 @@ build:
           - src: "src/**/*.ts"
             dest: .
     - image: vitoraa/fastpayfood-client
-      context: client
+      context: packages/client
       docker:
         dockerfile: Dockerfile
       sync:
