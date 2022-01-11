@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts",
-    "test": "jest --watchAll --runInBand",
-    "test:ci": "jest"
+    "test": "jest --passWithNoTests --noStackTrace --runInBand",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "jest",
+    "precommit": "lint-staged"
   },
   "jest": {
     "preset": "ts-jest",
@@ -36,10 +38,11 @@
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
+    "@types/supertest": "^2.0.11",
     "jest": "^27.3.1",
-    "ts-jest": "^27.0.7",
+    "lint-staged": "^12.1.7",
     "mongodb-memory-server": "^8.0.2",
     "supertest": "^6.1.6",
-    "@types/supertest": "^2.0.11"
+    "ts-jest": "^27.0.7"
   }
 }
