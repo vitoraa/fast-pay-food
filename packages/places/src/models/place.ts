@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current'
+import { FoodCategoryDoc, foodCategorySchema } from './food-category';
 import { MenuDoc, menuSchema } from './menu';
 
 interface PlaceAttrs {
@@ -13,6 +14,7 @@ export interface PlaceDoc extends mongoose.Document {
   address: string;
   type: string;
   menus: MenuDoc[];
+  foodCategories: FoodCategoryDoc[];
   version: number;
 }
 
@@ -34,7 +36,8 @@ const placeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    menus: [menuSchema]
+    menus: [menuSchema],
+    foodCategories: [foodCategorySchema],
   },
   {
     toJSON: {
