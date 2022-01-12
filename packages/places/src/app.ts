@@ -10,6 +10,7 @@ import { showMenuRouter } from './routes/menu/show';
 import { newFoodCategoryRouter } from './routes/food-category/new';
 import { indexFoodCategoryRouter } from './routes/food-category';
 import { newFoodRouter } from './routes/food/new';
+import { indexFoodRouter } from './routes/food';
 
 const app = express();
 app.set('trust proxy', true);
@@ -28,6 +29,7 @@ app.use(showMenuRouter);
 app.use(newFoodCategoryRouter);
 app.use(indexFoodCategoryRouter);
 app.use(newFoodRouter);
+app.use(indexFoodRouter);
 
 app.all('*', async () => {
   throw new NotFoundError()
