@@ -1,10 +1,10 @@
-import { NotFoundError } from '@vitoraafastpayfood/common';
+import { NotFoundError, requireAuth } from '@vitoraafastpayfood/common';
 import express, { Request, Response } from 'express';
 import { Place } from '../../models/place';
 
 const router = express.Router();
 
-router.get('/api/places/:idPlace/food-category', async (req: Request, res: Response) => {
+router.get('/api/places/:idPlace/food-category', requireAuth, async (req: Request, res: Response) => {
   const placeId = req.params.idPlace;
   const place = await Place.findById(placeId);
 
